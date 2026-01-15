@@ -54,11 +54,11 @@ Example request:
 
 {
 
-\&nbsp; "username": "testUser",
+ "username": "testUser",
 
-\&nbsp; "email": "test@email.com",
+ "email": "test@email.com",
 
-\&nbsp; "password": "Strong123"
+ "password": "Strong123"
 
 }
 

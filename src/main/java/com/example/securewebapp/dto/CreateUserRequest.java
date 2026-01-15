@@ -1,20 +1,26 @@
 package com.example.securewebapp.dto;
 
+import com.example.securewebapp.validation.StrongPassword;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class CreateUserRequest {
 
-    @NotBlank
+    @NotBlank(message = "Username is required")
+    @Size(min = 3, max = 20, message = "Username must be 3-20 characters")
     private String username;
 
-    @Email
-    @NotBlank
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     private String email;
 
-    @Size(min = 6)
+    @NotBlank(message = "Password is required")
+    @Size(min = 8, message = "Password must be at least 8 characters")
+    @StrongPassword
     private String password;
+
+    // ===== GETTERS & SETTERS =====
 
     public String getUsername() {
         return username;
@@ -40,3 +46,4 @@ public class CreateUserRequest {
         this.password = password;
     }
 }
+

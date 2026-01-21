@@ -9,13 +9,37 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                // LAB 10 üçün hər şeyi söndürürük
-                .csrf(csrf -> csrf.disable())
+                
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
+                        .requestMatchers("/login", "/h2-console/**").permitAll()
+                        .requestMatchers("/notes/**").hasRole("USER")
+                        .anyRequest().authenticated()
+                )
+
+
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/notes", true)
+                        .permitAll()
+                )
+
+                // Logout
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login")
+                        .permitAll()
+                )
+
+
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/h2-console/**")
+                )
+
+
+                .headers(headers -> headers
+                        .frameOptions(frame -> frame.disable())
                 );
 
         return http.build();

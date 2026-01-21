@@ -27,4 +27,10 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(errors);
     }
+
+
+    @ExceptionHandler(RuntimeException.class)
+    public String handleRuntimeException(RuntimeException ex) {
+        return "redirect:/notes";
+    }
 }

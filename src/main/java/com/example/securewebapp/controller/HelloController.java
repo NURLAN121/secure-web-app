@@ -1,11 +1,8 @@
 package com.example.securewebapp.controller;
 
-import com.example.securewebapp.dto.CreateUserRequest;
-import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +35,7 @@ public class HelloController {
      * URL: POST /users
      * Consumes: application/json
      * Produces: application/json
-     *
+     * <p>
      * Responses:
      * 200 OK - valid request
      * 400 Bad Request - validation error
@@ -49,7 +46,10 @@ public class HelloController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public String createUser(@Valid @RequestBody CreateUserRequest request) {
-        return "User created: " + request.getUsername();
+
+    @GetMapping("/notes")
+    public String notes() {
+        return "notes";
     }
+
 }

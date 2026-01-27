@@ -17,7 +17,7 @@ public class Note {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // ===== GETTERS =====
+
 
     public Long getId() {
         return id;
@@ -31,7 +31,7 @@ public class Note {
         return user;
     }
 
-    // ===== SETTERS =====
+
 
     public void setId(Long id) {
         this.id = id;

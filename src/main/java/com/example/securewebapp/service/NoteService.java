@@ -45,9 +45,8 @@ public class NoteService {
         Note note = noteRepository.findById(noteId)
                 .orElseThrow(() -> new RuntimeException("Note not found"));
 
-        // 🔐 OWNERSHIP CHECK
+
         if (!note.getUser().getId().equals(user.getId())) {
-            // deliberately 404 to avoid information disclosure
             throw new RuntimeException("Note not found");
         }
 

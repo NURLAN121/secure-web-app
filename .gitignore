@@ -18,6 +18,14 @@ target/
 *.iws
 *.iml
 *.ipr
+/target/
+/.idea/
+*.iml
+
+/data/
+/src/main/resources/db/
+*.mv.db
+*.trace.db
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +39,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# runtime files
+data/
+userA.txt
+userB.txt
+

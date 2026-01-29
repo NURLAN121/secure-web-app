@@ -27,17 +27,17 @@ class NoteServiceTest {
 
     @Test
     void shouldAddNoteForUser() {
-        // fake user
+
         User user = new User();
         user.setEmail("test@test.com");
 
         when(userRepository.findByEmail("test@test.com"))
                 .thenReturn(java.util.Optional.of(user));
 
-        // run method
+
         noteService.addNote("hello", "test@test.com");
 
-        // verify save called
+
         verify(noteRepository, times(1)).save(any(Note.class));
     }
 }

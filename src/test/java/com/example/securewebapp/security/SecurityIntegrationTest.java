@@ -17,7 +17,7 @@ class SecurityIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // 🔐 Protected page without login → redirect to /login
+
     @Test
     void notes_requires_authentication() throws Exception {
         mockMvc.perform(get("/notes"))
@@ -25,7 +25,6 @@ class SecurityIntegrationTest {
                 .andExpect(redirectedUrl("http://localhost/login"));
     }
 
-    // 🔓 Public pages should be accessible
     @Test
     void login_page_is_public() throws Exception {
         mockMvc.perform(get("/login"))
